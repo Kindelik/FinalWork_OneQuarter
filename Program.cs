@@ -1,6 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿int ArrayQuantity( string[] array, int elemLength) // метод поиска количества элементов в массиве, подходящих по условию
+{
+    int quantity = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length <= elemLength) quantity++;
+    }
+    return quantity;
+}
 
+int requiredLengthElement = 3;
 System.Console.WriteLine("Введите элементы массива через точку с запятой\n Пример => sdf;12;sinple;gotolag;-2");
 string[] arrayString = Array.ConvertAll<string,string>(Console.ReadLine().Split(';'), elem => { return System.Convert.ToString (elem);});
-System.Console.WriteLine(string.Join(";",arrayString));
+int quantityElems = ArrayQuantity(arrayString,requiredLengthElement);
+string[] arraySelectedValues = new string[quantityElems];
+
